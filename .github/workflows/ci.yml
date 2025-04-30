@@ -31,12 +31,15 @@ jobs:
     - name: Run tests
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        # Set environment variables for SQLite (or other DB if needed)
+        DATABASE_URL: sqlite:///:memory:
       run: |
         python manage.py test
 
   deploy:
     runs-on: ubuntu-latest
     needs: test
+    if: github.ref == 'refs/heads/main'
 
     steps:
     - name: Check out code
