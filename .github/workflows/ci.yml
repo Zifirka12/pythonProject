@@ -31,6 +31,7 @@ jobs:
     - name: Run tests
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        DATABASE_URL: sqlite:///:memory:
       run: |
         python manage.py test
 
