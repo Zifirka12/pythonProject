@@ -1,4 +1,3 @@
-
 from urllib import request, response
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -90,9 +89,9 @@ class SubTestCase(APITestCase):
         response = self.client.post(f'/courses/{self.course.pk}/subscribe', data=data)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json(), {"message": "подписка добавлена"})
+        self.assertEqual(response.json(), {"message": "Подписка добавлена."})
 
         response1 = self.client.post(f'/courses/{self.course.pk}/subscribe', data=data)
 
         self.assertEqual(response1.status_code, status.HTTP_200_OK)
-        self.assertEqual(response1.json(), {"message": "подписка удалена"})
+        self.assertEqual(response1.json(), {"message": "Подписка удалена."})
